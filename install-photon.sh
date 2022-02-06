@@ -23,8 +23,8 @@ else
 fi
 
 
-tdnf update
-tdnf install nano,lsof,rsync,diffutils
+tdnf update -y
+tdnf install -y nano lsof rsync diffutils
 
 # set Europe/Berlin timezone - https://www.elasticsky.de/2019/10/zeitzone-in-photon-os-einstellen/
 set Europe/Berline timezone
@@ -44,9 +44,9 @@ chmod 640 /home/$username/.ssh/authorized_keys
 
 systemctl start docker
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chown root:users /usr/local/bin/docker-compose
-sudo chmod 770 /usr/local/bin/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chown root:users /usr/local/bin/docker-compose
+chmod 770 /usr/local/bin/docker-compose
 
 
 sed -i 's/^PermitRootLogin .*/PermitRootLogin no/g' /etc/ssh/sshd_config
@@ -59,3 +59,4 @@ echo "Installation completed"
 echo
 echo "Before logout from actual session try ssh login with user $username"
 echo
+

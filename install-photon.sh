@@ -57,6 +57,8 @@ sed -i 's/^PasswordAuthentication .*/PasswordAuthentication no/g' /etc/ssh/sshd_
 systemctl enable sshd
 systemctl start sshd
 
+passwd $username
+
 echo "Installation completed"
 echo
 echo "ATTENTION: set password for the new user $username with (passwd $username)

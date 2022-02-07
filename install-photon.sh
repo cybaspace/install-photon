@@ -34,7 +34,7 @@ ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 useradd -m -G sudo $username
 usermod -a -G docker $username
 
-echo -e “\nsemjon ALL= NOPASSWD:/usr/bin/rsync“ >> /etc/sudoers
+echo -e “\n$username ALL= NOPASSWD:/usr/bin/rsync“ >> /etc/sudoers
 
 mkdir /home/$username/.ssh
 echo "$pubkey" > /home/$username/.ssh/authorized_keys
@@ -59,6 +59,8 @@ systemctl start sshd
 
 echo "Installation completed"
 echo
-echo "Before logout from actual session try ssh login with user $username"
+echo "ATTENTION: set password for the new user $username with (passwd $username)
 echo
+echo "Before logout from actual session try ssh login with user $username"
+echo "  but you can't ssh login before setting password for user!"
 

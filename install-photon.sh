@@ -42,6 +42,7 @@ chown -R $username:users /home/$username/.ssh
 chmod 750 /home/$username/.ssh
 chmod 640 /home/$username/.ssh/authorized_keys
 
+systemctl enable docker
 systemctl start docker
 
 curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -53,6 +54,7 @@ sed -i 's/^PermitRootLogin .*/PermitRootLogin no/g' /etc/ssh/sshd_config
 sed -i 's/^UsePAM .*/UsePAM no/g' /etc/ssh/sshd_config
 sed -i 's/^PasswordAuthentication .*/PasswordAuthentication no/g' /etc/ssh/sshd_config
 
+systemctl enable sshd
 systemctl start sshd
 
 echo "Installation completed"

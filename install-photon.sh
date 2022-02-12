@@ -24,7 +24,7 @@ fi
 
 
 tdnf update -y
-tdnf install -y nano lsof rsync diffutils
+tdnf install -y nano lsof rsync diffutils git
 
 # set Europe/Berlin timezone - https://www.elasticsky.de/2019/10/zeitzone-in-photon-os-einstellen/
 set Europe/Berline timezone
